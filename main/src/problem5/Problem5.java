@@ -24,7 +24,7 @@ public class Problem5 {
 
   /**
    * This method brings all the other methods together. It calculates the lcm of the numbers by first
-   * finding the primes by calling findAllPrimesBelowNumber(numberofItems). Then Figures out the greatest power of each number.
+   * finding the primes by calling findAllPrimesBelowANumber(numberofItems). Then Figures out the greatest power of each number.
    *
    * @param numberofItems The number of items given by problem.
    * @return The LCM of all the numbers.
