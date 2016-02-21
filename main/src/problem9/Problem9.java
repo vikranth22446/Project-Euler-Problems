@@ -21,6 +21,7 @@ public class Problem9 {
 
   /**
    * This method finds the pythagorean triple that add to TOTAL_SUM.
+   *
    * @param certainSum The number given in the problem: 1000.
    * @return The product of the three numbers. If the number does not exist. Return 0.
    */
