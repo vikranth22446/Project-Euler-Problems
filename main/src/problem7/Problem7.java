@@ -35,6 +35,7 @@ public class Problem7 {
       for (Double prime : primes) {
         if (currentNumber % prime == 0)
           isPrime = false;
+        if(prime > Math.sqrt(currentNumber))break;
       }
       if (isPrime)
         primes.add(currentNumber);

@@ -100,11 +100,13 @@ public class Problem5 {
    */
   public ArrayList<Double> findAllPrimesBelowNumber(double givenNum) {
     ArrayList<Double> primes = new ArrayList<>();
+    primes.add(2.0);
     for (double currentNumber = 2; currentNumber <= givenNum; currentNumber++) {
       boolean isPrime = true;
       for (int indexOfArraylist = 0; indexOfArraylist < primes.size(); indexOfArraylist++) {
         if (currentNumber % primes.get(indexOfArraylist) == 0)
           isPrime = false;
+        if (primes.get(indexOfArraylist) > Math.sqrt(currentNumber)) break;
       }
       if (isPrime)
         primes.add(currentNumber);
