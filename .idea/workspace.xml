@@ -65,8 +65,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33159268">
-              <caret line="1249" column="0" selection-start-line="1249" selection-start-column="0" selection-end-line="1249" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6866841">
+              <caret line="1257" column="81" selection-start-line="1257" selection-start-column="17" selection-end-line="1257" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -120,6 +120,7 @@
         <option value="$PROJECT_DIR$/main/src/problem10/Problem10.java" />
         <option value="$PROJECT_DIR$/main/src/problem11/Problem11.java" />
         <option value="$PROJECT_DIR$/main/src/problem12/Problem12.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -513,6 +514,7 @@
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="Application.Problem12">
     <configuration default="false" name="Problem7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -866,7 +868,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456293613399</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add some workspace information">
+      <created>1456293802472</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1456293802472</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -874,7 +882,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -917,7 +925,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="WORK ON PROBLEM12" />
-    <option name="LAST_COMMIT_MESSAGE" value="WORK ON PROBLEM12" />
+    <MESSAGE value="Add some workspace information" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some workspace information" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1259,8 +1268,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33159268">
-          <caret line="1249" column="0" selection-start-line="1249" selection-start-column="0" selection-end-line="1249" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6866841">
+          <caret line="1257" column="81" selection-start-line="1257" selection-start-column="17" selection-end-line="1257" selection-end-column="17" />
           <folding />
         </state>
       </provider>
