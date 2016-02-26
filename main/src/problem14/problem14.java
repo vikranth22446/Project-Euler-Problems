@@ -13,11 +13,11 @@ public class Problem14 {
   }
 
   public void calculateNumberLinks() {
-    double currentLink = 0;
+
     double greatestLink = 0;
     double greatestNumber = 0;
     for (int i = 0; i <= 1E+6; i++) {
-      currentLink = 1;
+      double currentLink = 1;
 
       double value = findN(i);
       if(value==1)currentLink++;
