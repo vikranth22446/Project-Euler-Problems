@@ -4,48 +4,65 @@ package problem14;
 import java.util.ArrayList;
 
 public class Problem14 {
-  ArrayList<Double> numberLinks = new ArrayList<>();
+  private final static double NUMBER_TO_BE_UNDER = 1E+6;
+
+  private static double GREATEST_NUMBER_WITH_GREATEST_LINK;
 
   public static void main(String[] args) {
     Problem14 problem14 = new Problem14();
-    System.out.println(1E+6);
-    problem14.calculateNumberLinks();
+    GREATEST_NUMBER_WITH_GREATEST_LINK = problem14.calculateGreatestNumberLinks(NUMBER_TO_BE_UNDER);
+    System.out.println(GREATEST_NUMBER_WITH_GREATEST_LINK);
   }
 
-  public void calculateNumberLinks() {
+  /**
+   * Finds the greatest number of links by iterating through all the numbers, and to speed up time
+   * add numbers to arrayList to get later.
+   *
+   * @param nunberToBeUnder the number of numbers to be under given by the problem.
+   * @return Return the greatest Number of Links found from 1 to numberToBeUnder.
+   */
+  public double calculateGreatestNumberLinks(double nunberToBeUnder) {
+    /*
+       The number of links given a index of a certain number.
+     */
+    ArrayList<Double> numberLinks = new ArrayList<>();
 
-    double greatestLink = 0;
-    double greatestNumber = 0;
-    for (int i = 0; i <= 1E+6; i++) {
+    double greatestLink = 0, greatestNumber = 0;
+    for (int currentNumber = 0; currentNumber <= nunberToBeUnder; currentNumber++) {
       double currentLink = 1;
-
-      double value = findN(i);
-      if(value==1)currentLink++;
-      while (!(value == 1) && value != 0) {
-
-        if (value < numberLinks.size()) {
-          currentLink += numberLinks.get((int)value);
+      double nextNumberInChain = findNextNumberInChain(currentNumber);
+      
+      if (nextNumberInChain == 1) currentLink++;
+      while (!(nextNumberInChain == 1) && nextNumberInChain != 0) {
+        if (nextNumberInChain < numberLinks.size()) {
+          currentLink += numberLinks.get((int) nextNumberInChain);
           break;
-        }
-        else {
-          value = findN(value);
+        } else {
+          nextNumberInChain = findNextNumberInChain(nextNumberInChain);
           currentLink++;
-          if(value==1)currentLink++;
+          if (nextNumberInChain == 1) currentLink++;
         }
       }
+      
       numberLinks.add(currentLink);
-      if(greatestLink<currentLink){
+      if (greatestLink < currentLink) {
         greatestLink = currentLink;
-      greatestNumber = i;
+        greatestNumber = currentNumber;
       }
-      System.out.println(numberLinks.get(i));
+
     }
-    System.out.println(greatestNumber);
+    return greatestNumber;
   }
 
-  public double findN(double n) {
-    if (n == 1 | n == 0) return 0;
-    else if (n % 2 == 0) return n / 2;
-    else return 3 * n + 1;
+  /**
+   * Finds the next number to chain.
+   *
+   * @param number the currentLink passed.
+   * @return Return the next number in the chain.
+   */
+  public double findNextNumberInChain(double number) {
+    if (number == 1 | number == 0) return 0;
+    else if (number % 2 == 0) return number / 2;
+    else return 3 * number + 1;
   }
 }
