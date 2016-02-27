@@ -8,7 +8,7 @@ public class Problem11 {
   /**
    * Given: The Grid given in the problem
    */
-  public static double[][] GIVEN_GRID = {
+  public static final double[][] GIVEN_GRID = {
       {8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
       {49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0},
       {81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65},
@@ -33,7 +33,7 @@ public class Problem11 {
   /**
    * Given: the number of numbers to find the products of.
    */
-  public static int GIVEN_NUMBER_TO_FIND = 4;
+  public static final int GIVEN_NUMBER_TO_FIND = 4;
 
   /**
    * Use: The offsets from the current position of the up,down,left,right, and the diagonals.
@@ -49,12 +49,20 @@ public class Problem11 {
    */
   private static double GREATEST_PRODUCT;
 
+  public static void main(String[] args) {
+    Problem11 problem11 = new Problem11(GIVEN_NUMBER_TO_FIND);
+    GREATEST_PRODUCT = problem11.iterateThroughGrid(GIVEN_GRID, GIVEN_NUMBER_TO_FIND);
+    System.out.println(GREATEST_PRODUCT);
+  }
+
   /**
    * Finds the Offset from the current position of the up,down,right,left, and the diagonals.
    */
   public Problem11(double numberToFind) {
-    int col1 = 0, col2 = 1;
-    for (int row = 0, offset = 1; row < numberToFind - 1; row++, offset++) {
+    int col1 = 0,
+        col2 = 1;
+    for (int row = 0,
+         offset = 1; row < numberToFind - 1; row++, offset++) {
       up[row][col1] = 0;
       up[row][col2] = offset;
 
@@ -90,11 +98,6 @@ public class Problem11 {
     else return grid[row][col];
   }
 
-  public static void main(String[] args) {
-    Problem11 problem11 = new Problem11(GIVEN_NUMBER_TO_FIND);
-    GREATEST_PRODUCT = problem11.iterateThroughGrid(GIVEN_GRID, GIVEN_NUMBER_TO_FIND);
-    System.out.println(GIVEN_GRID);
-  }
 
   /**
    * Loops through all the positions in the gird, and calculates the greatest value.
