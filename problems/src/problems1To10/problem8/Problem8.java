@@ -1,4 +1,4 @@
-package problems1To10.problem8;
+package problems1to10.problem8;
 
 /**
  * This program find the value of the greatest product thirteen adjacent digits.

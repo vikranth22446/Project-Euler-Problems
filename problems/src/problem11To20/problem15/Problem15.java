@@ -1,4 +1,4 @@
-package problem11To20.problem15;
+package problem11to20.problem15;
 
 /**
  * Find the Maximum Routs in a grid.

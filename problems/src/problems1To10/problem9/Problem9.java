@@ -1,4 +1,4 @@
-package problems1To10.problem9;
+package problems1to10.problem9;
 
 /**
  * Finds the product of a Pythagorean triple that add up to 1000.

@@ -1,4 +1,4 @@
-package problems1To10.problem3;
+package problems1to10.problem3;
 
 /**
  * This program tries find the greatest prime divisor of a number.

@@ -1,4 +1,4 @@
-package problem11To20.problem16;
+package problem11to20.problem16;
 
 import java.math.BigDecimal;
 

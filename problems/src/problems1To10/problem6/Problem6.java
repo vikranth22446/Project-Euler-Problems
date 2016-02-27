@@ -1,4 +1,4 @@
-package problems1To10.problem6;
+package problems1to10.problem6;
 
 /**
  * Find the difference between square of a sum and the sums of a square

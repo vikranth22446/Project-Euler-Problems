@@ -1,4 +1,4 @@
-package problems1To10.problem2;
+package problems1to10.problem2;
 
 /**
  * This program tries to find the sum of the even Fibonacci numbers not exceeding 4,000,000

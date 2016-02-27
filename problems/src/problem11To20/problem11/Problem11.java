@@ -1,4 +1,4 @@
-package problem11To20.problem11;
+package problem11to20.problem11;
 
 /**
  * This program finds the greatest product of four adjacent numbers in the same direction

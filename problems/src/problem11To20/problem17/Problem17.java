@@ -1,4 +1,4 @@
-package problem11To20.problem17;
+package problem11to20.problem17;
 
 import java.util.*;
 

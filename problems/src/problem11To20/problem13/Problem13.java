@@ -1,4 +1,4 @@
-package problem11To20.problem13;
+package problem11to20.problem13;
 
 /**
  * Finds the sum of all the lines
