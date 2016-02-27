@@ -50,20 +50,27 @@ public class Problem17 {
   }
 
   public void findTotalSumOfWords() {
-    int sumOfOneTo19 = 0;
-    for (double i = 1; i <= 19; i++) {
-      sumOfOneTo19 += myIndex.get(i).length();
+    int sumOfOneTo9 = 0;
+    for (double i = 1.0; i <= 9; i++) {
+      sumOfOneTo9 += myIndex.get(i).length();
     }
-    System.out.println(sumOfOneTo19);
-    int sumofOneToHundred = sumOfOneTo19*9;
-    for (double i = 20; i <= 90; i += 10) {
-       sumofOneToHundred += myIndex.get(i).length();
-     }
+    int sumOf11To19 = 0;
+    for (double i = 10.0; i <= 19; i++) {
+      sumOf11To19 += myIndex.get(i).length();
+    }
+    int sumofOneToHundred = sumOf11To19+sumOfOneTo9;
+    for (double i = 20.0; i <= 90; i += 10) {
+      sumofOneToHundred += 10*myIndex.get(i).length()+sumOfOneTo9;
+    }
+    int sumTotal = sumofOneToHundred;
+    System.out.println(sumofOneToHundred);
+
+    sumofOneToHundred += sumOfOneTo9*100 +
+                          myIndex.get(100.0).length()*9
+                        +(myIndex.get(100.0).length() +myIndex.get(-1.0).length())*99*9
+                        +sumTotal*9+myIndex.get(1.0).length()+myIndex.get(1000.0).length();
 
     System.out.println(sumofOneToHundred);
-    int sumOfTotal = sumOfOneTo19 * (myIndex.get(100.0).length() + myIndex.get(-1.0).length())
-        + sumofOneToHundred*10+myIndex.get(1.0).length()+myIndex.get(1000.0).length();
-    System.out.println(sumOfTotal);
 
   }
 
