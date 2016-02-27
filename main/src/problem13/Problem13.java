@@ -108,7 +108,7 @@ public class Problem13 {
       "20849603980134001723930671666823555245252804609722\n" +
       "53503534226472524250874054075591789781264330331690";
   /**
-   * The number of digits in each line
+   * Given: The number of digits needed to return
    */
   private static int NUM_DIGITS = 10;
   /**
@@ -118,16 +118,16 @@ public class Problem13 {
 
   public static void main(String[] args) {
     Problem13 problem13 = new Problem13();
-    SUM_OF_DIGITS = problem13.findSum(GIVEN_STRING);
+    SUM_OF_DIGITS = problem13.findSum(GIVEN_STRING,NUM_DIGITS);
     System.out.println(SUM_OF_DIGITS);
   }
 
   /**
-   *
-   * @param theTotalNumber
-   * @return
+   * Finds the sum of the digits
+   * @param theTotalNumber the number digits neded to return in the problem:19
+   * @return Returns the NUM_DIGITS of the sum of all the numbers.
    */
-  public String findSum(String theTotalNumber) {
+  public String findSum(String theTotalNumber, int numDigits) {
     String[] numbers = theTotalNumber.split("\n");
     double sum = 0;
     for (String number : numbers) {
@@ -135,6 +135,6 @@ public class Problem13 {
         sum += Double.parseDouble(number);
       } catch (Exception ignored) {}
     }
-    return (sum + "").substring(0, 10) + "E" +(NUM_DIGITS-1);
+    return (sum + "").substring(0, numDigits) + "E" +(numDigits-1);
   }
 }
