@@ -3,11 +3,22 @@ package problem12;
 
 import java.util.ArrayList;
 
+/**
+ * Find the Triangular number with 500 factors.
+ * Triangular numbers are numbers that are the sum of all the numbers below it.
+ */
 public class Problem12 {
-
-  private static ArrayList<Double> LIST_OF_PRIMES = new ArrayList<>();
-
+  /**
+   * Given : The number of factors of the triangular numbers this programs needs to find.
+   */
   private static int MAX_FACTORS = 500;
+  /**
+   * Use: a List of Primes
+   */
+  private static ArrayList<Double> LIST_OF_PRIMES = new ArrayList<>();
+  /**
+   * Find: TRIANGULAR NUMBER WITH MAX FACTORS
+   */
   private static double TRIANGULAR_NUMBER_WITH_MAX_FACTORS;
 
   public static void main(String[] args) {
@@ -17,7 +28,7 @@ public class Problem12 {
   }
 
   /**
-   * Loops through triangle numbers to find the nth Factor
+   * Loops through triangle numbers to find the nth Factor.Also adds the basic triangular numbers 1 and 2
    *
    * @param listOfPrimes A List Of Primes
    * @param maxFactors   The number given in the problem:500
@@ -30,20 +41,21 @@ public class Problem12 {
     double triangleNumber = 0;
     for (int indexOfTriangularNumber = 2; factors <= maxFactors; indexOfTriangularNumber++) {
       triangleNumber = findTriangularNumbers(indexOfTriangularNumber);
-      factors = iterateThroughPrimeFactorization(findPrimeFactorization(triangleNumber, listOfPrimes));
+      factors = findNumberOfFactors(findPrimeFactorization(triangleNumber, listOfPrimes));
     }
     return triangleNumber;
   }
 
   /**
+   * Iterate through the prime factorization given.
    *
-   * @param primePowers
-   * @return
+   * @param primePowers The powers of the prime given by findPrimeFactors();
+   * @return The number of Factors.
    */
-  public int iterateThroughPrimeFactorization(double[] primePowers) {
-    int sum =1;
+  public int findNumberOfFactors(double[] primePowers) {
+    int sum = 1;
     for (double values : primePowers)
-      sum *= (values+1);
+      sum *= (values + 1);
 
     return sum;
   }
@@ -60,9 +72,12 @@ public class Problem12 {
   }
 
   /**
-   * @param triangularNumber
-   * @param primes
-   * @return
+   * Finds the prime factorization of the number by creating an array with all the primes.
+   * Also adds primes if the last prime is less than Math.sqrt(number)
+   *
+   * @param triangularNumber Finds a triangular number
+   * @param primes           a list of primes
+   * @return The prime factorization of the number.
    */
   public double[] findPrimeFactorization(double triangularNumber, ArrayList<Double> primes) {
 
@@ -72,7 +87,7 @@ public class Problem12 {
     double originalNumber = triangularNumber;
     double[] factorization = new double[primes.size()];
 
-    if (triangularNumber == 1 ) return factorization;
+    if (triangularNumber == 1) return factorization;
     //Does the Prime Factorization
 
     for (int primeNumberIndex = 0; primeNumberIndex < primes.size(); primeNumberIndex++) {
@@ -88,22 +103,24 @@ public class Problem12 {
   }
 
   /**
-   * @param array
-   * @param value
-   * @return
+   * Add primes to the current list of primes until it is less than the given value.
+   *
+   * @param listOfPrimes A list of primes.
+   * @param value        The value that is passed.
+   * @return Returns a list of primes with an increased
    */
-  private ArrayList<Double> addPrimes(ArrayList<Double> array, double value) {
-    for (double currentNumber = array.get(array.size() - 1); array.get(array.size() - 1) < value; currentNumber++) {
+  private ArrayList<Double> addPrimes(ArrayList<Double> listOfPrimes, double value) {
+    for (double currentNumber = listOfPrimes.get(listOfPrimes.size() - 1); listOfPrimes.get(listOfPrimes.size() - 1) < value; currentNumber++) {
       boolean isPrime = true;
-      for (Double anArray : array) {
+      for (Double anArray : listOfPrimes) {
         if (currentNumber % anArray == 0)
           isPrime = false;
       }
       if (isPrime)
-        array.add(currentNumber);
+        listOfPrimes.add(currentNumber);
     }
 
-    return array;
+    return listOfPrimes;
   }
 
 }

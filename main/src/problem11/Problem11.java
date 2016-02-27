@@ -5,6 +5,9 @@ package problem11;
  * (up, down, left, right, or diagonally) in the 20×20 grid.
  */
 public class Problem11 {
+  /**
+   * Given: The Grid given in the problem
+   */
   public static double[][] GIVEN_GRID = {
       {8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
       {49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0},
@@ -27,20 +30,31 @@ public class Problem11 {
       {20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54},
       {1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48}
   };
-  public static double GIVEN_GRID_ROW = 20;
-  public static double GIVEN_GRID_COL = 20;
-
+  /**
+   * Given: the number of numbers to find the products of.
+   */
   public static int GIVEN_NUMBER_TO_FIND = 4;
+
+  /**
+   * Use: The offsets from the current position of the up,down,left,right, and the diagonals.
+   */
   public static int[][] up = new int[GIVEN_NUMBER_TO_FIND - 1][2];
   public static int[][] down = new int[GIVEN_NUMBER_TO_FIND - 1][2];
   public static int[][] left = new int[GIVEN_NUMBER_TO_FIND - 1][2];
   public static int[][] right = new int[GIVEN_NUMBER_TO_FIND - 1][2];
   public static int[][] rightDiagonal = new int[GIVEN_NUMBER_TO_FIND - 1][2];
   public static int[][] leftDiagonal = new int[GIVEN_NUMBER_TO_FIND - 1][2];
+  /**
+   * The Greatest product of the GIVEN_NUMBER_TO_FIND
+   */
+  private static double GREATEST_PRODUCT;
 
-  public void findOffset() {
+  /**
+   * Finds the Offset from the current position of the up,down,right,left, and the diagonals.
+   */
+  public Problem11(double numberToFind) {
     int col1 = 0, col2 = 1;
-    for (int row = 0, offset = 1; row < GIVEN_NUMBER_TO_FIND - 1; row++, offset++) {
+    for (int row = 0, offset = 1; row < numberToFind - 1; row++, offset++) {
       up[row][col1] = 0;
       up[row][col2] = offset;
 
@@ -61,44 +75,70 @@ public class Problem11 {
     }
   }
 
-  public double isOnGrid(int i, int k, double[][] grid) {
-    if (i >= 20 || i < 0 || k >= 20 || k < 0)
+  /**
+   * Checks if the number is on the gird. If it is on the grid the method returns the value else it
+   * returns zero.
+   *
+   * @param row  The row position to check.
+   * @param col  The col position to check.
+   * @param grid the given grid given in the problem.
+   * @return Returns 0 if it is not on grid
+   */
+  public double valueOnGrid(int row, int col, double[][] grid) {
+    if (row >= 20 || row < 0 || col >= 20 || col < 0)
       return 0;
-    else return grid[i][k];
+    else return grid[row][col];
   }
 
   public static void main(String[] args) {
-    Problem11 problem11 = new Problem11();
-    System.out.println(problem11.iterateThroughGrid(GIVEN_GRID));
+    Problem11 problem11 = new Problem11(GIVEN_NUMBER_TO_FIND);
+    GREATEST_PRODUCT = problem11.iterateThroughGrid(GIVEN_GRID, GIVEN_NUMBER_TO_FIND);
+    System.out.println(GIVEN_GRID);
   }
 
-  public double iterateThroughGrid(double[][] grid) {
-    findOffset();
-    double greatestOffset = 0;
-    for (int i = 0; i < GIVEN_GRID_ROW; i++) {
-      for (int j = 0; j < GIVEN_GRID_COL; j++) {
-        double currentValue = runThroughOffsets(i, j, grid);
-        if (currentValue > greatestOffset) greatestOffset = currentValue;
+  /**
+   * Loops through all the positions in the gird, and calculates the greatest value.
+   *
+   * @param grid The given Grid.
+   * @return The greatest v
+   */
+  public double iterateThroughGrid(double[][] grid, int numberToFind) {
+    double greatestProductOfTheCombination = 0;
+    for (int row = 0; row < grid.length; row++) {
+      for (int col = 0; col < grid[0].length; col++) {
+        double currentValue = runThroughOffsets(row, col, grid, numberToFind);
+        if (currentValue > greatestProductOfTheCombination) greatestProductOfTheCombination = currentValue;
       }
     }
-    return greatestOffset;
+
+    return greatestProductOfTheCombination;
   }
 
-  public double runThroughOffsets(int a, int b, double[][] grid) {
-    double currentValue = grid[a][b];
+  /**
+   * Finds the product of the numbers with different offset and finds the maximum of the pattern.
+   *
+   * @param currentRow The current position given by iterate through grid.
+   * @param currentCol The current position given by iterate through grid.
+   * @param grid       The grid given by the problem.
+   * @return The Greatest value of the up,down,left,right and the diagonals for each position.
+   */
+  public double runThroughOffsets(int currentRow, int currentCol, double[][] grid, int numberToFind) {
+    double currentValue = grid[currentRow][currentCol];
+
     double upValue = currentValue;
     double downValue = currentValue;
     double leftValue = currentValue;
     double rightValue = currentValue;
     double rightDiagonalValue = currentValue;
     double leftDiagonalValue = currentValue;
-    for (int i = 0; i < GIVEN_NUMBER_TO_FIND - 1; i++) {
-      upValue *= isOnGrid(a + up[i][0], b + up[i][1], grid);
-      downValue *= isOnGrid(a + down[i][0], b + down[i][1], grid);
-      leftValue *= isOnGrid(a + left[i][0], b + left[i][1], grid);
-      rightValue *= isOnGrid(a + right[i][0], b + right[i][1], grid);
-      rightDiagonalValue *= isOnGrid(a + rightDiagonal[i][0], b + rightDiagonal[i][1], grid);
-      leftDiagonalValue *= isOnGrid(a + leftDiagonal[i][0], b + leftDiagonal[i][1], grid);
+
+    for (int i = 0; i < numberToFind - 1; i++) {
+      upValue *= valueOnGrid(currentRow + up[i][0], currentCol + up[i][1], grid);
+      downValue *= valueOnGrid(currentRow + down[i][0], currentCol + down[i][1], grid);
+      leftValue *= valueOnGrid(currentRow + left[i][0], currentCol + left[i][1], grid);
+      rightValue *= valueOnGrid(currentRow + right[i][0], currentCol + right[i][1], grid);
+      rightDiagonalValue *= valueOnGrid(currentRow + rightDiagonal[i][0], currentCol + rightDiagonal[i][1], grid);
+      leftDiagonalValue *= valueOnGrid(currentRow + leftDiagonal[i][0], currentCol + leftDiagonal[i][1], grid);
     }
 
     return Math.max(

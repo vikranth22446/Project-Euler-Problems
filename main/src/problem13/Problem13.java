@@ -1,9 +1,12 @@
 package problem13;
 
 /**
- * Created by vikranth on 2/23/2016.
+ * Finds the sum of all the lines
  */
 public class Problem13 {
+  /**
+   * Given: A string with all the numbers
+   */
   public static String GIVEN_STRING = "37107287533902102798797998220837590246510135740250\n" +
       "46376937677490009712648124896970078050417018260538\n" +
       "74324986199524741059474233309513058123726617309629\n" +
@@ -104,23 +107,33 @@ public class Problem13 {
       "72107838435069186155435662884062257473692284509516\n" +
       "20849603980134001723930671666823555245252804609722\n" +
       "53503534226472524250874054075591789781264330331690";
+  /**
+   * The number of digits in each line
+   */
   private static int NUM_DIGITS = 10;
+  /**
+   * Find: The sum of the digits
+   */
+  private static String SUM_OF_DIGITS;
 
   public static void main(String[] args) {
     Problem13 problem13 = new Problem13();
-    System.out.println(problem13.findSum(GIVEN_STRING));
+    SUM_OF_DIGITS = problem13.findSum(GIVEN_STRING);
+    System.out.println(SUM_OF_DIGITS);
   }
 
-  public String findSum(String s) {
-    String totalString;
-    String[] numbers = s.split("\n");
+  /**
+   *
+   * @param theTotalNumber
+   * @return
+   */
+  public String findSum(String theTotalNumber) {
+    String[] numbers = theTotalNumber.split("\n");
     double sum = 0;
-    for (int i = 0; i < numbers.length; i++) {
+    for (String number : numbers) {
       try {
-        sum += Double.parseDouble(numbers[i] + "");
-      } catch (Exception ignored) {
-      }
-
+        sum += Double.parseDouble(number);
+      } catch (Exception ignored) {}
     }
     return (sum + "").substring(0, 10) + "E" +(NUM_DIGITS-1);
   }
