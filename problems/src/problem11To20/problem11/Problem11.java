@@ -93,8 +93,7 @@ public class Problem11 {
    * @return Returns 0 if it is not on grid
    */
   public double valueOnGrid(int row, int col, double[][] grid) {
-    if (row >= 20 || row < 0 || col >= 20 || col < 0)
-      return 0;
+    if (row >= 20 || row < 0 || col >= 20 || col < 0) return 0;
     else return grid[row][col];
   }
 
