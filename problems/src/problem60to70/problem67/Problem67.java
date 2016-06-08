@@ -1,23 +1,22 @@
-package problem11to20.problem18;
+package problem60to70.problem67;
 
+import problem11to20.problem18.HeapValue;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Problem18 {
+/**
+ * This is the same code used in Problem 18
+ */
+public class Problem67 {
     private ArrayList<HeapValue> givenArray = new ArrayList<>();
     private int maximum = 0;
     private String pathToString = "maximumPathProblem.txt";
 
-    public Problem18() {
-    }
-
-
-
     public static void main(String[] args) {
-        Problem18 problem18 = new Problem18();
-        problem18.findLongestPath(problem18.readInt(problem18.givenArray), problem18.findTotalRows());
-        System.out.println(problem18.getMaximum());
+        Problem67 problem67 = new Problem67();
+        problem67.findLongestPath(problem67.readInt(problem67.givenArray), problem67.findTotalRows());
+        System.out.println(problem67.getMaximum());
     }
 
     public int findTotalRows() {
